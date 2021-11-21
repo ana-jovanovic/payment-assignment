@@ -6,9 +6,9 @@ namespace PaymentAssignement.Controllers
 {
     public class TransactionsController : Controller
     {
-        private readonly ITransactionService _transactionService;
+        private readonly ITransactionsService _transactionService;
 
-        public TransactionsController(ITransactionService transactionService)
+        public TransactionsController(ITransactionsService transactionService)
         {
             _transactionService = transactionService;
         }

@@ -214,8 +214,8 @@
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Interfaces\ITransactionService.cs" />
-    <Compile Include="Services\TransactionService.cs" />
+    <Compile Include="Services\Interfaces\ITransactionsService.cs" />
+    <Compile Include="Services\TransactionsService.cs" />
     <Compile Include="ViewModels\TransactionViewModel.cs" />
     <Compile Include="ViewModels\VendorPaidAmountViewModel.cs" />
     <Compile Include="ViewModels\VendorSearchViewModel.cs" />

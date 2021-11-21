@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PaymentAssignement.Services.Interfaces
 {
-    public interface ITransactionService
+    public interface ITransactionsService
     {
         IList<Transaction> GetUnpaidTransactions();
         IList<VendorPaidAmountViewModel> GetVendorsPaidAmount(string startDate, string endDate);

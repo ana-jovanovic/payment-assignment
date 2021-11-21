@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace PaymentAssignement.Services
 {
-    public class TransactionService : ITransactionService
+    public class TransactionsService : ITransactionsService
     {
         private readonly PaymentAssignmentContext _context;
 
-        public TransactionService(PaymentAssignmentContext context)
+        public TransactionsService(PaymentAssignmentContext context)
         {
             _context = context;
         }

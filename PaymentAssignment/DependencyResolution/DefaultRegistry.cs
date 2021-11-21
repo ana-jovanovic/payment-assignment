@@ -30,7 +30,7 @@ namespace PaymentAssignement.DependencyResolution {
                     scan.TheCallingAssembly();
 					scan.With(new ControllerConvention());
                 });
-            For<ITransactionService>().Use<TransactionService>();
+            For<ITransactionsService>().Use<TransactionsService>();
         }
 
         #endregion
