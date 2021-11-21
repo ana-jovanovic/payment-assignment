@@ -1,0 +1,14 @@
+﻿@model bool
+@{
+    ViewBag.Title = "PaidTransaction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model)
+{
+    <h2>Transaction has been successfully paid.</h2>
+}
+else
+{
+    <h2>We couldn't proccess your transaction, please try again.</h2>
+}

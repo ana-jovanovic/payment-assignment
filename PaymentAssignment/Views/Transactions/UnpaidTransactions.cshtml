@@ -3,6 +3,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@(Html.BeginForm("PayTransaction", "Transactions"))
+{
 @if (Model != null && Model.Any())
 {
     <table class="table">
@@ -24,6 +26,8 @@
             </th>
             <th>
                 Vendor Name
+            </th>
+            <th>
             </th>
         </tr>
 
@@ -48,7 +52,11 @@
                 <td>
                     @transaction.VendorName
                 </td>
+                <td>
+                    <button type="submit" class="btn btn-primary">Pay transaction</button>
+                </td>
             </tr>
         }
     </table>
+}
 }

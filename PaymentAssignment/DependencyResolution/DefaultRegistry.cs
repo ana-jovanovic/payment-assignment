@@ -15,22 +15,28 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace PaymentAssignement.DependencyResolution {
+namespace PaymentAssignement.DependencyResolution
+{
     using PaymentAssignement.Services;
     using PaymentAssignement.Services.Interfaces;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
-	
-    public class DefaultRegistry : Registry {
+
+    public class DefaultRegistry : Registry
+    {
         #region Constructors and Destructors
 
-        public DefaultRegistry() {
+        public DefaultRegistry()
+        {
             Scan(
-                scan => {
+                scan =>
+                {
                     scan.TheCallingAssembly();
-					scan.With(new ControllerConvention());
+                    scan.With(new ControllerConvention());
                 });
+            For<IDataService>().Use<DataService>();
             For<ITransactionsService>().Use<TransactionsService>();
+            For<IPaymentService>().Use<PaymentService>();
         }
 
         #endregion

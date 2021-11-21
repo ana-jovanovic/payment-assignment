@@ -1,8 +1,6 @@
-﻿using PaymentAssignement.Context;
-using PaymentAssignement.Context.Models;
+﻿using PaymentAssignement.Context.Models;
 using PaymentAssignement.Services.Interfaces;
 using PaymentAssignement.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,27 +8,36 @@ namespace PaymentAssignement.Services
 {
     public class TransactionsService : ITransactionsService
     {
-        private readonly PaymentAssignmentContext _context;
+        private readonly IDataService _dataService;
+        private readonly IPaymentService _paymentProccessor;
 
-        public TransactionsService(PaymentAssignmentContext context)
+        public TransactionsService(IDataService dataService, IPaymentService paymentProccessor)
         {
-            _context = context;
+            _dataService = dataService;
+            _paymentProccessor = paymentProccessor;
         }
 
         public IList<Models.Transaction> GetUnpaidTransactions()
         {
-            var dbTransactions = _context.Transactions.Where(t => !t.IsPaid).ToList();
+            var dbTransactions = _dataService.GetUnpaidTransactions();
 
             return MapTransactions(dbTransactions);
         }
 
+        public bool PayTransaction(TransactionViewModel transaction)
+        {
+            var paid = false;
+            if (_paymentProccessor.GetPaymentResult(transaction))
+            {
+                paid = true;
+                _dataService.UpdateTransaction(transaction.Id);
+            }
+            return paid;
+        }
+
         public IList<VendorPaidAmountViewModel> GetVendorsPaidAmount(string startDate, string endDate)
         {
-            return _context.Transactions
-            .Where(t => t.IsPaid && (string.IsNullOrEmpty(startDate) && string.IsNullOrEmpty(endDate) ? true :
-                string.IsNullOrEmpty(startDate) ? t.Date <= Convert.ToDateTime(endDate) :
-                    string.IsNullOrEmpty(endDate) ? t.Date >= Convert.ToDateTime(startDate) :
-                        t.Date >= Convert.ToDateTime(startDate) && t.Date <= Convert.ToDateTime(endDate)))
+            return _dataService.GetUnpaidTransactionsByDate(startDate, endDate)
             .GroupBy(t => t.VendorId)
             .Select(g => new VendorPaidAmountViewModel
             {
@@ -54,6 +61,7 @@ namespace PaymentAssignement.Services
                 {
                     transactions.Add(new Models.Transaction
                     {
+                        Id = dbTransaction.Id,
                         Date = dbTransaction.Date.ToShortDateString(),
                         Amount = dbTransaction.Amount,
                         AccountId = dbTransaction.AccountId,
@@ -70,9 +78,11 @@ namespace PaymentAssignement.Services
             return null;
         }
 
+
+
         private IList<Models.Account> GetAccounts()
         {
-            var dbAccounts = _context.Accounts;
+            var dbAccounts = _dataService.GetAllAccounts();
 
             if (dbAccounts != null && dbAccounts.Any())
             {
@@ -95,7 +105,7 @@ namespace PaymentAssignement.Services
 
         private IList<Models.Consultant> GetConsultants()
         {
-            var dbConsultants = _context.Consultants;
+            var dbConsultants = _dataService.GetAllConsultants();
 
             if (dbConsultants != null && dbConsultants.Any())
             {
@@ -119,7 +129,7 @@ namespace PaymentAssignement.Services
 
         private IList<Project> GetProjects()
         {
-            var dbProjects = _context.Projects;
+            var dbProjects = _dataService.GetAllProjects();
 
             if (dbProjects != null && dbProjects.Any())
             {
@@ -141,7 +151,7 @@ namespace PaymentAssignement.Services
 
         private IList<Models.Vendor> GetVendors()
         {
-            var dbVendors = _context.Vendors;
+            var dbVendors = _dataService.GetAllVendors();
 
             if (dbVendors != null && dbVendors.Any())
             {

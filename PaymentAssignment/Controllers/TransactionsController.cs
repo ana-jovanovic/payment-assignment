@@ -19,6 +19,12 @@ namespace PaymentAssignement.Controllers
             return View("UnpaidTransactions", model);
         }
 
+        public ActionResult PayTransaction(TransactionViewModel transaction)
+        {
+            var model = _transactionService.PayTransaction(transaction);
+            return View("PaidTransaction", model);
+        }
+
         public ActionResult VendorSearch()
         {
             return View();
