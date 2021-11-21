@@ -1,0 +1,54 @@
+﻿@model IList<PaymentAssignement.Models.Transaction>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <tr>
+            <th>
+                Transaction Date
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Account Name
+            </th>
+            <th>
+                Consultant Name
+            </th>
+            <th>
+                Project Name
+            </th>
+            <th>
+                Vendor Name
+            </th>
+        </tr>
+
+        @foreach (var transaction in Model)
+        {
+            <tr>
+                <td>
+                    @transaction.Date
+                </td>
+                <td>
+                    @transaction.Amount
+                </td>
+                <td>
+                    @transaction.AccountName
+                </td>
+                <td>
+                    @transaction.ConsultantName
+                </td>
+                <td>
+                    @transaction.ProjectName
+                </td>
+                <td>
+                    @transaction.VendorName
+                </td>
+            </tr>
+        }
+    </table>
+}

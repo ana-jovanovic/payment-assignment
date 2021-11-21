@@ -1,0 +1,31 @@
+﻿@model IList<PaymentAssignement.ViewModels.VendorsPaidAmountViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <tr>
+            <th>
+                Vendor Name
+            </th>
+            <th>
+                Total Paid Amount
+            </th>
+        </tr>
+
+        @foreach (var info in Model)
+        {
+            <tr>
+                <td>
+                    @info.VendorId
+                </td>
+                <td>
+                    @info.TotalSum
+                </td>
+            </tr>
+        }
+    </table>
+}
