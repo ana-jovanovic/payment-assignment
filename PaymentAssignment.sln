@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentAssignement", "PaymentAssignement\PaymentAssignement.csproj", "{FA6790E7-3D70-430D-AEF0-90DB81751524}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentAssignment", "PaymentAssignment\PaymentAssignment.csproj", "{FA6790E7-3D70-430D-AEF0-90DB81751524}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
