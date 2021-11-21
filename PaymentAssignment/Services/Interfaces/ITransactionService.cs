@@ -7,6 +7,6 @@ namespace PaymentAssignement.Services.Interfaces
     public interface ITransactionService
     {
         IList<Transaction> GetUnpaidTransactions();
-        IList<VendorPaidAmountViewModel> GetPaidAmountPerVendor(string startDate, string endDate);
+        IList<VendorPaidAmountViewModel> GetVendorsPaidAmount(string startDate, string endDate);
     }
 }

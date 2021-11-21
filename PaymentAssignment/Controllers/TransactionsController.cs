@@ -1,4 +1,5 @@
 ﻿using PaymentAssignement.Services.Interfaces;
+using PaymentAssignement.ViewModels;
 using System.Web.Mvc;
 
 namespace PaymentAssignement.Controllers
@@ -18,10 +19,15 @@ namespace PaymentAssignement.Controllers
             return View("UnpaidTransactions", model);
         }
 
-        public ActionResult GetPaidAmountPerVendor(string startDate, string endDate)
+        public ActionResult VendorSearch()
         {
-            var model = _transactionService.GetPaidAmountPerVendor(startDate, endDate);
-            return View("PaidAmountPerVendor", model);
+            return View();
+        }
+
+        public ActionResult GetVendorsPaidAmount(VendorSearchViewModel viewModel)
+        {
+            var model = _transactionService.GetVendorsPaidAmount(viewModel.StartDate, viewModel.EndDate);
+            return View("VendorPaidAmount", model);
         }
     }
 }

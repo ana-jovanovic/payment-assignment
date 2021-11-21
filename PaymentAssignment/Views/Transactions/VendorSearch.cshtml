@@ -1,0 +1,24 @@
+﻿@model PaymentAssignement.ViewModels.VendorSearchViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("GetVendorsPaidAmount", "Transactions"))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.StartDate)
+                @Html.TextBoxFor(m => m.StartDate)
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.EndDate)
+                @Html.TextBoxFor(m => m.EndDate)
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+}

@@ -218,6 +218,7 @@
     <Compile Include="Services\TransactionService.cs" />
     <Compile Include="ViewModels\TransactionViewModel.cs" />
     <Compile Include="ViewModels\VendorPaidAmountViewModel.cs" />
+    <Compile Include="ViewModels\VendorSearchViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -270,7 +271,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Transactions\UnpaidTransactions.cshtml" />
-    <Content Include="Views\Transactions\PaidAmountPerVendor.cshtml" />
+    <Content Include="Views\Transactions\VendorPaidAmount.cshtml" />
+    <Content Include="Views\Transactions\VendorSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
