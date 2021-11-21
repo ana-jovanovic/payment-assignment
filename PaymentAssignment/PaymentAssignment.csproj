@@ -192,7 +192,6 @@
     <Compile Include="Context\PaymentAssignmentContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -218,7 +217,7 @@
     <Compile Include="Services\Interfaces\ITransactionService.cs" />
     <Compile Include="Services\TransactionService.cs" />
     <Compile Include="ViewModels\TransactionViewModel.cs" />
-    <Compile Include="ViewModels\VendorsPaidAmountViewModel.cs" />
+    <Compile Include="ViewModels\VendorPaidAmountViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -271,7 +270,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Transactions\UnpaidTransactions.cshtml" />
-    <Content Include="Views\Transactions\PaidAmountsPerVendor.cshtml" />
+    <Content Include="Views\Transactions\PaidAmountPerVendor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

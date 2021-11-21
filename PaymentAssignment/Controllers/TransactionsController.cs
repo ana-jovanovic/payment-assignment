@@ -18,10 +18,10 @@ namespace PaymentAssignement.Controllers
             return View("UnpaidTransactions", model);
         }
 
-        public ActionResult GetPaidAmountsPerVendor(string startDate, string endDate)
+        public ActionResult GetPaidAmountPerVendor(string startDate, string endDate)
         {
-            var model = _transactionService.GetPaidAmountsPerVendor(startDate, endDate);
-            return View("PaidAmountsPerVendor", model);
+            var model = _transactionService.GetPaidAmountPerVendor(startDate, endDate);
+            return View("PaidAmountPerVendor", model);
         }
     }
 }

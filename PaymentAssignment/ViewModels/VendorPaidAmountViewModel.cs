@@ -1,8 +1,8 @@
 ﻿namespace PaymentAssignement.ViewModels
 {
-    public class VendorsPaidAmountViewModel
+    public class VendorPaidAmountViewModel
     {
-        public int VendorId { get; set; }
+        public string VendorName { get; set; }
         public decimal TotalSum { get; set; }
     }
 }

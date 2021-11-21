@@ -95,7 +95,6 @@ C:\Projects\payment-assignment\PaymentAssignment\bin\Antlr3.Runtime.pdb
 C:\Projects\payment-assignment\PaymentAssignment\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Projects\payment-assignment\PaymentAssignment\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Projects\payment-assignment\PaymentAssignment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignment.csprojAssemblyReference.cache
 C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignement.Migrations.InitialModel.resources
 C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignement.Migrations.AddForeignKeys.resources
 C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignment.csproj.GenerateResource.cache

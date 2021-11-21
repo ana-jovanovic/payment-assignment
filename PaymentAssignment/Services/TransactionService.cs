@@ -1,5 +1,6 @@
 ﻿using PaymentAssignement.Context;
 using PaymentAssignement.Context.Models;
+using PaymentAssignement.Models;
 using PaymentAssignement.Services.Interfaces;
 using PaymentAssignement.ViewModels;
 using System;
@@ -17,21 +18,30 @@ namespace PaymentAssignement.Services
             _context = context;
         }
 
-        public IList<VendorsPaidAmountViewModel> GetPaidAmountsPerVendor(string startDate, string endDate)
-        {
-            var vendorsPaidAmountViewModel = _context.Transactions
-                .Where(t => t.IsPaid && t.Date >= DateTime.Parse(startDate) && t.Date <= DateTime.Parse(endDate))
-                .GroupBy(t => t.VendorId)
-                .Select(g => new VendorsPaidAmountViewModel { VendorId = g.Select(v => v.VendorId).FirstOrDefault(), TotalSum = g.Sum(v => v.Amount) })
-                .ToList();
-            
-            return vendorsPaidAmountViewModel;
-        }
-
         public IList<Models.Transaction> GetUnpaidTransactions()
         {
             var dbTransactions = _context.Transactions.Where(t => !t.IsPaid).ToList();
 
+            return MapTransactions(dbTransactions.Where(t => !t.IsPaid).ToList());
+        }
+
+        public IList<VendorPaidAmountViewModel> GetPaidAmountPerVendor(string startDate, string endDate)
+        {
+            var vendorPaidAmounts = _context.Transactions
+                .Where(t => t.IsPaid && t.Date >= DateTime.Parse(startDate) && t.Date <= DateTime.Parse(endDate))
+                .GroupBy(t => t.VendorId)
+                .Select(g => new VendorPaidAmountViewModel
+                {
+                    VendorName = g.Select(v => GetVendors().Where(s => s.Id == v.VendorId).Select(s => s.Name).FirstOrDefault()).FirstOrDefault(),
+                    TotalSum = g.Sum(v => v.Amount)
+                })
+                .ToList();
+
+            return vendorPaidAmounts;
+        }
+
+        private IList<Models.Transaction> MapTransactions(IList<Context.Models.Transaction> dbTransactions)
+        {
             if (dbTransactions != null && dbTransactions.Any())
             {
                 var transactions = new List<Models.Transaction>();
@@ -45,8 +55,8 @@ namespace PaymentAssignement.Services
                         AccountId = dbTransaction.AccountId,
                         AccountName = GetAccounts().Where(a => a.Id == dbTransaction.AccountId).Select(a => a.Name).FirstOrDefault(),
                         ConsultantName = GetConsultants().Where(c => c.Id == dbTransaction.ConsultantId).Select(c => c.Name).FirstOrDefault(),
-                        ProjectName = GetConsultants().Where(p => p.Id == dbTransaction.ProjectId).Select(p => p.Name).FirstOrDefault(),
-                        VendorName = GetConsultants().Where(v => v.Id == dbTransaction.VendorId).Select(v => v.Name).FirstOrDefault()
+                        ProjectName = GetProjects().Where(p => p.Id == dbTransaction.ProjectId).Select(p => p.Name).FirstOrDefault(),
+                        VendorName = GetVendors().Where(v => v.Id == dbTransaction.VendorId).Select(v => v.Name).FirstOrDefault()
                     });
                 }
 
