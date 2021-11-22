@@ -7,7 +7,7 @@ namespace PaymentAssignement.Services.Interfaces
     public interface ITransactionsService
     {
         IList<Transaction> GetUnpaidTransactions();
-        bool PayTransaction(TransactionViewModel transaction);
+        bool PayTransaction(int transactionId, int accountId);
         IList<VendorPaidAmountViewModel> GetVendorsPaidAmount(string startDate, string endDate);
     }
 }

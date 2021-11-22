@@ -1,7 +1,6 @@
 ﻿using PaymentAssignement.Constants;
-using PaymentAssignement.Processors.Interfaces;
+using PaymentAssignement.PaymentProcessors.Interfaces;
 using PaymentAssignement.Services.Interfaces;
-using PaymentAssignement.ViewModels;
 
 namespace PaymentAssignement.Services
 {
@@ -18,25 +17,19 @@ namespace PaymentAssignement.Services
             _paySimple = paySimple;
         }
 
-        public bool GetPaymentResult(TransactionViewModel transaction)
+        public bool GetPaymentResult(int accountId)
         {
-            var dbTransaction = _dataService.GetTransactionById(transaction.Id);
-            if (dbTransaction != null)
+            var bankName = _dataService.GetAccountById(accountId)?.BankName;
+            switch (bankName)
             {
-                var bankName = _dataService.GetAccountById(dbTransaction.AccountId)?.BankName;
-                switch (bankName)
-                {
-                    case PaymentConstants.Banks.USBank:
-                    case PaymentConstants.Banks.BankOfAmerica:
-                        return _square.ProcessPayment();
-                    case PaymentConstants.Banks.JPMorgan:
-                        return _paySimple.ProcessPayment();
-                    default:
-                        return false;
-                }
+                case PaymentConstants.Banks.USBank:
+                case PaymentConstants.Banks.BankOfAmerica:
+                    return _square.ProcessPayment();
+                case PaymentConstants.Banks.JPMorgan:
+                    return _paySimple.ProcessPayment();
+                default:
+                    return false;
             }
-
-            return false;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using PaymentAssignement.Processors.Interfaces;
+﻿using PaymentAssignement.PaymentProcessors.Interfaces;
 
 namespace PaymentAssignement.Processors
 {

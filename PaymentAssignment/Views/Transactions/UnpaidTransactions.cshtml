@@ -33,24 +33,26 @@
 
         @foreach (var transaction in Model)
         {
+            @Html.HiddenFor(m => transaction.Id)
+            @Html.HiddenFor(m => transaction.AccountId)
             <tr>
                 <td>
-                    @transaction.Date
+                    @Html.DisplayFor(m => transaction.Date)
                 </td>
                 <td>
-                    @transaction.Amount
+                    @Html.DisplayFor(m => transaction.Amount)
                 </td>
                 <td>
-                    @transaction.AccountName
+                    @Html.DisplayFor(m => transaction.AccountName)
                 </td>
                 <td>
-                    @transaction.ConsultantName
+                    @Html.DisplayFor(m => transaction.ConsultantName)
                 </td>
                 <td>
-                    @transaction.ProjectName
+                    @Html.DisplayFor(m => transaction.ProjectName)
                 </td>
                 <td>
-                    @transaction.VendorName
+                    @Html.DisplayFor(m => transaction.VendorName)
                 </td>
                 <td>
                     <button type="submit" class="btn btn-primary">Pay transaction</button>

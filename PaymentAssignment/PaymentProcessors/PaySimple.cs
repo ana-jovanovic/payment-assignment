@@ -1,6 +1,6 @@
-﻿using PaymentAssignement.Processors.Interfaces;
+﻿using PaymentAssignement.PaymentProcessors.Interfaces;
 
-namespace PaymentAssignement.Processors
+namespace PaymentAssignement.PaymentProcessors
 {
     public class PaySimple : IPaySimple
     {

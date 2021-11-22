@@ -24,20 +24,20 @@ namespace PaymentAssignement.Services
             return MapTransactions(dbTransactions);
         }
 
-        public bool PayTransaction(TransactionViewModel transaction)
+        public bool PayTransaction(int transactionId, int accountId)
         {
             var paid = false;
-            if (_paymentProccessor.GetPaymentResult(transaction))
+            if (_paymentProccessor.GetPaymentResult(accountId))
             {
                 paid = true;
-                _dataService.UpdateTransaction(transaction.Id);
+                _dataService.UpdateTransaction(transactionId);
             }
             return paid;
         }
 
         public IList<VendorPaidAmountViewModel> GetVendorsPaidAmount(string startDate, string endDate)
         {
-            return _dataService.GetUnpaidTransactionsByDate(startDate, endDate)
+            return _dataService.GetPaidTransactionsByDate(startDate, endDate)
             .GroupBy(t => t.VendorId)
             .Select(g => new VendorPaidAmountViewModel
             {
@@ -77,8 +77,6 @@ namespace PaymentAssignement.Services
 
             return null;
         }
-
-
 
         private IList<Models.Account> GetAccounts()
         {

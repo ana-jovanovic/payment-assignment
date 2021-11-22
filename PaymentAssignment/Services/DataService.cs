@@ -26,23 +26,23 @@ namespace PaymentAssignement.Services
             return GetAllTransactions().Where(t => !t.IsPaid).ToList();
         }
 
-        public IList<Transaction> GetUnpaidTransactionsByDate(string startDate, string endDate)
+        public IList<Transaction> GetPaidTransactionsByDate(string startDate, string endDate)
         {
             if (string.IsNullOrEmpty(startDate) && string.IsNullOrEmpty(endDate))
             {
-                return GetUnpaidTransactions();
+                return GetPaidTransactions();
             }
             else if (string.IsNullOrEmpty(startDate))
             {
-                return GetUnpaidTransactions().Where(t => t.Date <= Convert.ToDateTime(endDate)).ToList();
+                return GetPaidTransactions().Where(t => t.Date <= Convert.ToDateTime(endDate)).ToList();
             }
             else if (string.IsNullOrEmpty(endDate))
             {
-                return GetUnpaidTransactions().Where(t => t.Date >= Convert.ToDateTime(startDate)).ToList();
+                return GetPaidTransactions().Where(t => t.Date >= Convert.ToDateTime(startDate)).ToList();
             }
             else
             {
-                return GetAllTransactions().Where(t => t.Date >= Convert.ToDateTime(startDate) && t.Date <= Convert.ToDateTime(endDate)).ToList();
+                return GetPaidTransactions().Where(t => t.Date >= Convert.ToDateTime(startDate) && t.Date <= Convert.ToDateTime(endDate)).ToList();
             }
         }
 
@@ -87,6 +87,11 @@ namespace PaymentAssignement.Services
         public IList<Vendor> GetAllVendors()
         {
             return _context.Vendors.ToList();
+        }
+
+        private IList<Transaction> GetPaidTransactions()
+        {
+            return GetAllTransactions().Where(t => t.IsPaid).ToList();
         }
     }
 }

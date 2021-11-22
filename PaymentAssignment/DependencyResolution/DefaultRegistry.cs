@@ -17,6 +17,9 @@
 
 namespace PaymentAssignement.DependencyResolution
 {
+    using PaymentAssignement.PaymentProcessors;
+    using PaymentAssignement.PaymentProcessors.Interfaces;
+    using PaymentAssignement.Processors;
     using PaymentAssignement.Services;
     using PaymentAssignement.Services.Interfaces;
     using StructureMap.Configuration.DSL;
@@ -37,6 +40,8 @@ namespace PaymentAssignement.DependencyResolution
             For<IDataService>().Use<DataService>();
             For<ITransactionsService>().Use<TransactionsService>();
             For<IPaymentService>().Use<PaymentService>();
+            For<IPaySimple>().Use<PaySimple>();
+            For<ISquare>().Use<Square>();
         }
 
         #endregion

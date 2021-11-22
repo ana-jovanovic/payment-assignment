@@ -214,10 +214,10 @@
     <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\Vendor.cs" />
-    <Compile Include="Processors\Interfaces\IPaySimple.cs" />
-    <Compile Include="Processors\Interfaces\ISquare.cs" />
-    <Compile Include="Processors\PaySimple.cs" />
-    <Compile Include="Processors\Square.cs" />
+    <Compile Include="PaymentProcessors\Interfaces\IPaySimple.cs" />
+    <Compile Include="PaymentProcessors\Interfaces\ISquare.cs" />
+    <Compile Include="PaymentProcessors\PaySimple.cs" />
+    <Compile Include="PaymentProcessors\Square.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\Interfaces\IDataService.cs" />

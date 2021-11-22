@@ -102,3 +102,4 @@ C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignment.csp
 C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignment.csproj.CopyComplete
 C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignement.dll
 C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignement.pdb
+C:\Projects\payment-assignment\PaymentAssignment\obj\Debug\PaymentAssignment.csprojAssemblyReference.cache

@@ -1,4 +1,5 @@
-﻿using PaymentAssignement.Services.Interfaces;
+﻿using PaymentAssignement.Models;
+using PaymentAssignement.Services.Interfaces;
 using PaymentAssignement.ViewModels;
 using System.Web.Mvc;
 
@@ -19,9 +20,9 @@ namespace PaymentAssignement.Controllers
             return View("UnpaidTransactions", model);
         }
 
-        public ActionResult PayTransaction(TransactionViewModel transaction)
+        public ActionResult PayTransaction(Transaction transaction)
         {
-            var model = _transactionService.PayTransaction(transaction);
+            var model = _transactionService.PayTransaction(transaction.Id, transaction.AccountId);
             return View("PaidTransaction", model);
         }
 

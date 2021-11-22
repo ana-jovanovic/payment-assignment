@@ -1,4 +1,4 @@
-﻿namespace PaymentAssignement.Processors.Interfaces
+﻿namespace PaymentAssignement.PaymentProcessors.Interfaces
 {
     public interface ISquare
     {
